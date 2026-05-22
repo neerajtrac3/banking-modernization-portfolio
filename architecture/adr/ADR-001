@@ -1,66 +1,185 @@
-Event-driven architecture  
-# ADR-001: Adopt Event-Driven Architecture as the Integration Backbone
+--- a/architecture/adr/ADR-001.md
++++ b/architecture/adr/ADR-001.md
+@@ -1,20 +1,180 @@
+ # ADR-001: Adoption of Event-Driven Architecture (EDA)
 
-## 1. Status
-Accepted
+ ## Status
+-Accepted
++Accepted  
++Date: 2026-05-22
 
-## 2. Context
+ ## Context
+-The bank needs to modernize its integration landscape and support real-time capabilities. Event-Driven Architecture (EDA) is being considered as a foundational pattern.
++The bank’s current integration landscape relies heavily on point‑to‑point REST APIs, batch ETL pipelines, and legacy ESB-style orchestration.  
++These patterns create tight coupling, operational fragility, duplicated logic, and slow change cycles.  
++
++As the bank expands real‑time capabilities—RTP, fraud scoring, customer‑360, AML, lending automation—existing mechanisms cannot meet required latency, scalability, or resilience.  
++
++To support modernization across core banking, payments, fraud, customer intelligence, and regulatory workloads, the enterprise requires a **loosely coupled, domain‑aligned, real‑time integration backbone**.  
++
++Event‑Driven Architecture (EDA) provides this foundation.
 
-The bank is modernizing multiple domains simultaneously: Customer 360, Fraud and AML, Loan Origination, Real-Time Payments, and Core Banking.  
-These domains must exchange data and decisions in real time, support high throughput, and remain loosely coupled to allow independent evolution.
+ ## Decision
+-The bank will adopt Event-Driven Architecture as a primary integration pattern.
++The bank will adopt **Event‑Driven Architecture (EDA)** as a **first‑class integration pattern** for all real‑time, cross‑domain communication.  
++
++EDA becomes the default mechanism for:
++- Domain event publishing and consumption  
++- Real‑time data propagation  
++- Asynchronous workflows  
++- Event‑sourced audit and lineage  
++- Streaming analytics and ML feature pipelines  
++
++REST/gRPC APIs remain for synchronous request/response interactions, but EDA becomes the **primary integration backbone** for modernization.
 
-Traditional point-to-point integrations and batch file exchanges are:
-
-- Hard to scale  
-- Operationally fragile  
-- Difficult to audit and observe  
-- Slow to change  
-
-A new integration backbone is required.
-
-## 3. Decision
-
-We will adopt an **event-driven architecture (EDA)** as the primary integration pattern across domains, using a distributed event streaming platform (for example, Kafka) as the backbone.
-
-Key aspects:
-
-- Domains publish **immutable events** (facts)  
-- Other domains **subscribe** and react to those events  
-- Events follow a **canonical taxonomy and schema** (see `event-taxonomy.md`)  
-- Consumers are **idempotent** and **independently deployable**  
-
-## 4. Rationale
-
-- **Loose coupling:** Producers and consumers evolve independently  
-- **Scalability:** Event streaming platforms handle very high throughput  
-- **Real-time:** Supports instant fraud checks, RTP decisions, and C360 updates  
-- **Auditability:** Events form an immutable audit trail  
-- **Replayability:** New consumers can replay historical events  
-
-This aligns with the needs of:
-
-- Real-Time Payments (low latency, high throughput)  
-- Fraud and AML (real-time scoring, alerts)  
-- Customer 360 (near real-time profile updates)  
-- Loan Origination (event-driven workflows)  
-
-## 5. Consequences
-
-### 5.1 Positive
-
-- Simplified integration between domains  
-- Better resilience to downstream failures  
-- Easier onboarding of new consumers  
-- Strong foundation for analytics and AI  
-
-### 5.2 Negative
-
-- Requires investment in event platform operations  
-- Requires schema governance and versioning  
-- Developers must design for idempotency and eventual consistency  
-
-## 6. Related Artifacts
-
-- `architecture/event-taxonomy.md`  
-- `architecture/banking-modernization-reference-architecture.md`  
-- `architecture/non-functional-architecture.md`  
++---
++
++## Architectural Scope & Boundaries
++
++### Included Domains
++- Customer 360 and profile enrichment  
++- Fraud, AML, and risk scoring  
++- Real‑Time Payments (RTP)  
++- Lending origination and servicing  
++- Core banking event propagation  
++- Treasury and liquidity events  
++- Digital channels and notifications  
++
++### Excluded / Limited Scope
++- Regulatory batch reporting (FFIEC, CCAR)  
++- Archival systems  
++- Legacy mainframe batch jobs (until CDC modernization)  
++
++### Coexistence Patterns
++- REST/gRPC for synchronous operations  
++- SFTP/Batch for legacy systems during transition  
++- CDC for mainframe and core coexistence  
++
++---
++
++## Event Governance Model
++
++To ensure consistency and long‑term maintainability, the bank will implement a **formal event governance framework**:
++
++- **Domain Ownership:** Each domain owns its event lifecycle, schema, and versioning.  
++- **Canonical Event Taxonomy:** All events must align with the enterprise taxonomy.  
++- **Schema Registry Enforcement:** All events must be validated before publishing.  
++- **Versioning Strategy:**  
++  - Backward‑compatible, additive changes only  
++  - Breaking changes require new event versions  
++- **Event Review Process:**  
++  - Linting, schema validation, naming conventions  
++  - Governance board approval for cross‑domain events  
++
++---
++
++## Non‑Functional Requirements (NFRs)
++
++- **Latency:** <50 ms end‑to‑end for fraud and RTP events  
++- **Throughput:** Minimum 50k events/sec sustained  
++- **Availability:** 99.99% for event backbone  
++- **Durability:** Multi‑AZ replication, 7–30 day retention  
++- **Security:** TLS 1.2+, AES‑256, RBAC, audit logs  
++- **Observability:** Lag monitoring, consumer health, lineage tracking  
++
++---
++
++## Platform & Technology Decisions
++
++The bank will adopt a **distributed event streaming platform** (Kafka, MSK, Confluent Cloud, or Pulsar) based on:
++- High throughput and low latency  
++- Strong ordering guarantees  
++- Durable log‑based storage  
++- Mature ecosystem (connectors, schema registry, monitoring)  
++- Multi‑AZ and multi‑region replication  
++
++Additional components:
++- **Schema Registry:** Apicurio, Confluent, or AWS Glue  
++- **Event Mesh (optional):** For hybrid/multi‑cloud routing  
++- **Stream Processing:** Flink, ksqlDB, or Spark Structured Streaming  
++
++---
++
++## Migration Strategy
++
++The bank will transition from legacy integration patterns to EDA using a **phased modernization approach**:
++
++- **Strangler Pattern:** Gradually replace P2P integrations with event streams  
++- **CDC Integration:** Capture changes from core banking and mainframe systems  
++- **Dual‑Write Strategy:** Temporary coexistence during migration  
++- **Event Enrichment Layer:** Normalize and enrich events for downstream consumers  
++- **Progressive Domain Onboarding:** Prioritize high‑value domains (fraud, RTP, C360)  
++
++---
++
++## Operational Considerations
++
++- **Monitoring:** Lag, consumer offsets, throughput, partition health  
++- **Alerting:** Threshold‑based alerts for consumer failures  
++- **Dead‑Letter Queues (DLQ):** For poison messages and schema violations  
++- **Replay Controls:** Controlled replay with audit logging  
++- **Disaster Recovery:** Multi‑AZ replication, cross‑region failover  
++
++---
++
++## Compliance & Risk Controls
++
++- **PII/PCI Minimization:** Only essential data allowed in events  
++- **Data Retention:** Aligned with regulatory mandates  
++- **Immutable Audit Trail:** Events serve as a tamper‑evident record  
++- **Access Controls:** Principle of least privilege  
++- **Monitoring for Sensitive Data Leakage**  
++
++---
++
++## Alternatives Considered
++
++### Point‑to‑Point REST  
++- Tight coupling  
++- High operational overhead  
++- Poor scalability  
++**Rejected**
++
++### ESB / SOA  
++- Centralized bottleneck  
++- Limited real‑time capabilities  
++**Rejected**
++
++### Batch ETL  
++- High latency  
++- Not suitable for fraud, RTP, or real‑time analytics  
++**Rejected**
++
++### API‑Only Integration  
++- Cannot support event propagation or streaming workloads  
++**Rejected**
++
++---
++
++## Consequences
++
++### Positive
++- Real‑time data propagation  
++- Reduced coupling and improved agility  
++- Strong auditability and lineage  
++- Foundation for ML feature pipelines  
++- Improved resilience and fault isolation  
++
++### Negative / Trade‑offs
++- Requires new operational skills  
++- Increased governance overhead  
++- Migration complexity for legacy systems  
++
++---
++
++## Example Event Flow
++
++```mermaid
++flowchart LR
++    LO[Loan Origination] --> E1[LoanApplicationSubmitted Event]
++    E1 --> FR[Fraud Engine]
++    FR --> E2[FraudScoreCalculated Event]
++    E2 --> CB[Core Banking]
++    CB --> E3[AccountUpdated Event]
++    E3 --> C360[Customer 360]
++```
