@@ -82,7 +82,7 @@ flowchart LR
     subgraph Downstream["Downstream Systems"]
         G --> H[🏦 Core Banking / AML / Fraud / Reconciliation]
     end
-
+```
 ---
 
 ## 4. BankingSLM Integration (AI Component)
