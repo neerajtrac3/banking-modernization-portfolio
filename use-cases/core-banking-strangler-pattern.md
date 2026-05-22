@@ -93,7 +93,8 @@ flowchart LR
 
     C --> G[Event Stream]
     G --> D
-
+```
+---
 
 ## 7. Modernization decision framework
 
