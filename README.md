@@ -50,7 +50,6 @@ banking-modernization-portfolio/
 │
 ├── governance/
 │   ├── security-controls.md
-│   ├── compliance-mapping-ISO20022-
 ├── compliance-mapping-ISO20022-PCI-FFIEC.md
 └── auditability-and-observability.md
 
