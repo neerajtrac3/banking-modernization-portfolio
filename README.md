@@ -166,10 +166,6 @@ class BankingModernizationPortfolio:
 
 
 **5. Authorship & Citation** 
-All materials in this repository are authored by Neeraj Aggarwal.
-
-Suggested citation:
-
 Aggarwal, Neeraj. Banking Modernization Portfolio: Architectures, Frameworks, and Transformation Assets for Financial Institutions. GitHub Repository, 2026.
 
 6. License
