@@ -7,6 +7,118 @@ AI Component: BankingSLM for SAR drafting
 
 KPIs: False positive reduction, case closure time
 
+## 1. Introduction
+
+Fraud and Anti‑Money Laundering (AML) risks have increased significantly due to digital adoption, instant payments, sophisticated threat actors, and evolving regulatory expectations. Traditional fraud and AML systems rely heavily on batch processing, static rules, siloed data, and manual investigations—resulting in high false positives, operational inefficiencies, and missed risks.
+
+Modernization requires a shift to **real‑time, AI‑driven, event‑based detection**, supported by unified customer intelligence, graph analytics, behavioral biometrics, and automated case workflows. This document outlines a comprehensive modernization blueprint for building an enterprise‑grade Fraud & AML platform aligned with regulatory, operational, and customer experience goals.
+
+
+## 2. Business Drivers
+
+Banks modernize Fraud & AML capabilities to address rising threats, regulatory pressure, and operational inefficiencies.
+
+### 2.1 Risk & Compliance Drivers
+- Increasing regulatory scrutiny (BSA/AML, FATF, OFAC, CFPB)
+- Higher penalties for AML violations and reporting failures
+- Need for explainable AI and transparent decisioning
+- Real‑time monitoring requirements for instant payments
+
+### 2.2 Fraud Prevention Drivers
+- Surge in digital fraud (ATO, APP fraud, synthetic identities)
+- Sophisticated adversaries using automation and social engineering
+- Need for multi‑layered defense (device, behavior, network)
+
+### 2.3 Operational Efficiency Drivers
+- High false‑positive rates in legacy systems
+- Manual investigations and fragmented case workflows
+- Siloed fraud and AML teams with duplicated processes
+
+### 2.4 Customer Experience Drivers
+- Reduce friction for legitimate customers
+- Enable real‑time approvals with minimal delays
+- Provide proactive alerts and self‑service fraud controls
+
+### 2.5 Technology & Data Drivers
+- Move from batch to real‑time detection
+- Adoption of graph analytics and behavioral biometrics
+- Integration with Customer 360 for contextual risk scoring
+
+## 3. Scope of Fraud & AML Modernization
+
+The modernization program spans multiple layers of the bank’s risk, data, and technology ecosystem.
+
+### 3.1 Fraud Modernization Scope
+- Real‑time transaction monitoring
+- Account takeover detection
+- Device and behavioral biometrics
+- Synthetic identity detection
+- Card fraud and digital payments fraud
+- APP (Authorized Push Payment) fraud prevention
+
+### 3.2 AML Modernization Scope
+- Transaction monitoring modernization
+- Sanctions and watchlist screening
+- KYC/CDD/EDD modernization
+- Suspicious Activity Report (SAR/STR) automation
+- Case management and investigator workflows
+
+### 3.3 Data & Intelligence Scope
+- Unified risk signals across channels
+- Graph‑based entity resolution
+- Behavioral analytics and anomaly detection
+- Integration with Customer 360 platform
+- Feature store for ML‑ready risk features
+
+### 3.4 Technology Scope
+- Event streaming (Kafka/Pulsar)
+- Real‑time scoring engine
+- ML model serving and monitoring
+- Case management platform
+- Alert prioritization and orchestration
+
+## 4. Key Capabilities
+
+A modern Fraud & AML platform delivers the following core capabilities:
+
+### 4.1 Real‑Time Detection
+- Sub‑100ms scoring for payments and digital interactions
+- Real‑time sanctions screening
+- Behavioral anomaly detection
+
+### 4.2 Multi‑Layered Risk Scoring
+- Device intelligence
+- Behavioral biometrics
+- Transaction patterns
+- Network/graph risk propagation
+- Customer 360 enrichment
+
+### 4.3 AI‑Driven Insights
+- ML‑based fraud detection models
+- AML typology detection models
+- Synthetic identity detection
+- Risk‑based segmentation
+
+### 4.4 Graph Analytics
+- Entity link analysis (customers, devices, accounts)
+- Fraud ring detection
+- Mule network identification
+
+### 4.5 Case Management & Workflow Automation
+- Alert triage and prioritization
+- Investigator workbench
+- SAR/STR automation
+- Audit trails and regulatory reporting
+
+### 4.6 Governance & Explainability
+- Model explainability (SHAP, LIME)
+- Rule transparency
+- Data lineage and traceability
+- Compliance‑aligned decision logs
+
+These capabilities form the foundation for the advanced sections (Threat Taxonomy, Architecture, Scoring Engine, Data Products, KPIs, etc.).
+
+
 
 ## 5. Fraud & AML Threat Taxonomy
 
