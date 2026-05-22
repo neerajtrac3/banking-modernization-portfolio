@@ -57,8 +57,46 @@ This use case addresses the modernization of **message ingestion, validation, tr
 
 ## 3. Detailed Architecture Diagram (Text Description)
 
-
-[Channels / External Schemes] | v +---------------------------+ | ISO 20022 Message Gateway | +---------------------------+ | v +---------------------------+ | Schema Validation Service | +---------------------------+ | v +-------------------------------------------+ | Semantic Validation Engine (BankingSLM) | | - Field-level reasoning | | - Business rule validation | | - Compliance interpretation (FFIEC/OCC) | +-------------------------------------------+ | v +---------------------------+ | MT <-> MX Mapping Engine | +---------------------------+ | v +---------------------------+ | Enrichment & Transformation | +---------------------------+ | v +---------------------------+ | Event Streaming Layer | +---------------------------+ | v +---------------------------+ | Downstream Core Systems | +---------------------------+
+```text
+[Channels / External Schemes]
+        |
+        v
++---------------------------+
+| ISO 20022 Message Gateway |
++---------------------------+
+        |
+        v
++---------------------------+
+| Schema Validation Service |
++---------------------------+
+        |
+        v
++-------------------------------------------+
+| Semantic Validation Engine (BankingSLM)   |
+| - Field-level reasoning                   |
+| - Business rule validation                |
+| - Compliance interpretation (FFIEC/OCC)   |
++-------------------------------------------+
+        |
+        v
++---------------------------+
+| MT <-> MX Mapping Engine |
++---------------------------+
+        |
+        v
++---------------------------+
+| Enrichment & Transformation |
++---------------------------+
+        |
+        v
++---------------------------+
+| Event Streaming Layer     |
++---------------------------+
+        |
+        v
++---------------------------+
+| Downstream Core Systems   |
++---------------------------+
 
 ---
 
