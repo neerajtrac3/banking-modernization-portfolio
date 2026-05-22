@@ -59,28 +59,28 @@ This use case addresses the modernization of **message ingestion, validation, tr
 ```mermaid
 flowchart LR
     subgraph Ingestion["Ingestion Layer"]
-        A[📥 Channels / External Schemes] --> B[ISO 20022 Message Gateway]
+        A[Channels / External Schemes] --> B[ISO 20022 Message Gateway]
     end
 
     subgraph Validation["Validation Layer"]
-        B --> C[🔍 Schema Validation Service]
-        C --> D[🤖 Semantic Validation Engine (BankingSLM)]
-        D --> D1[• Field‑level reasoning]
-        D --> D2[• Business rule validation]
-        D --> D3[• Compliance interpretation (FFIEC / OCC)]
+        B --> C[Schema Validation Service]
+        C --> D[Semantic Validation Engine (BankingSLM)]
+        D --> D1[Field-level reasoning]
+        D --> D2[Business rule validation]
+        D --> D3[Compliance interpretation (FFIEC / OCC)]
     end
 
     subgraph Processing["Processing Layer"]
-        D --> E[🧩 MT ↔ MX Mapping Engine]
-        E --> F[⚙️ Enrichment & Transformation Layer]
+        D --> E[MT <-> MX Mapping Engine]
+        E --> F[Enrichment & Transformation Layer]
     end
 
     subgraph Streaming["Streaming Layer"]
-        F --> G[🔄 Event Streaming Layer]
+        F --> G[Event Streaming Layer]
     end
 
     subgraph Downstream["Downstream Systems"]
-        G --> H[🏦 Core Banking / AML / Fraud / Reconciliation]
+        G --> H[Core Banking / AML / Fraud / Reconciliation]
     end
 ```
 ---
