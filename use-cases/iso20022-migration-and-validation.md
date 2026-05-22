@@ -57,7 +57,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
 
 ## 3. Detailed Architecture Diagram (Text Description)
 
-```text
+` ```text `
 [Channels / External Schemes]
         |
         v
@@ -97,6 +97,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
 +---------------------------+
 | Downstream Core Systems   |
 +---------------------------+
+
 ```
 ---
 
