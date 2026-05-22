@@ -97,7 +97,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
 +---------------------------+
 | Downstream Core Systems   |
 +---------------------------+
-
+```
 ---
 
 ## 4. BankingSLM Integration (AI Component)
