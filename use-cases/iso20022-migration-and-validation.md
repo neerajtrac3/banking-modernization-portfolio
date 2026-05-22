@@ -56,7 +56,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
 ---
 
 ## 3. Detailed Architecture Diagram (Text Description)
-
+```Text
 flowchart TD
     A[Channels / External Schemes] --> B[ISO 20022 Message Gateway]
 
