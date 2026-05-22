@@ -118,7 +118,7 @@ All events share a common envelope:
   "destinationBank": "string",
   "paymentType": "RTP"
 }
-
+```
 
 sequenceDiagram
     participant C360 as Customer 360
