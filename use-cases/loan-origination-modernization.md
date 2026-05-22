@@ -352,5 +352,7 @@ Loan origination modernization is tightly integrated with enterprise risk and cu
 - Automated data quality checks
 - Event‑driven audit trails
 
+<img width="1536" height="1024" alt="Loan Origination" src="https://github.com/user-attachments/assets/9ef34475-7e55-4416-84d4-2255a0ef57c8" />
+
 
 
