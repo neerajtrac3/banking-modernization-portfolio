@@ -186,7 +186,7 @@ This accelerates audit cycles and improves quality.
 
 ---
 
-## 6. Mermaid Diagram (Architecture Flow)
+## 6. Architecture Flow Diagram
 
 ```mermaid
 flowchart LR
