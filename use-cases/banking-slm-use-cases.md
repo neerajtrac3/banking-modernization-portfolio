@@ -84,7 +84,7 @@ Produces JSON, XML, tables, and templates required for banking systems.
 
 ## 4. Conceptual Architecture (High‑Level)
 
-```text
+```
 +-----------------------------------------------------------+
 |                   BankingSLM Architecture                 |
 +-----------------------------------------------------------+
@@ -109,6 +109,7 @@ Produces JSON, XML, tables, and templates required for banking systems.
 |  - Event‑driven triggers                                   |
 +-----------------------------------------------------------+
 ```
+
 ---
 
 ## 5. BankingSLM Use Cases
