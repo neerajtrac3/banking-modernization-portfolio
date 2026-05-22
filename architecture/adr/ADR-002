@@ -1,1 +1,79 @@
  ISO 20022 as canonical payment format
+# ADR‑002: Event Schema Governance Framework
+
+## Status
+Accepted  
+
+
+---
+
+## 1. Context
+
+As the bank adopts Event‑Driven Architecture (EDA), multiple domains will publish and consume events across customer, payments, lending, fraud, AML, and core banking systems.  
+Without a formal governance model, the organization risks:
+
+- Schema drift  
+- Inconsistent naming conventions  
+- Breaking changes impacting downstream systems  
+- Poor data quality  
+- Event explosion and duplication  
+
+A structured governance framework is required to ensure **consistency, interoperability, and long‑term maintainability**.
+
+---
+
+## 2. Decision
+
+The bank will implement a **centralized but domain‑owned Event Schema Governance Framework** that enforces:
+
+- Canonical event taxonomy  
+- Schema validation and versioning  
+- Backward‑compatible evolution  
+- Domain ownership and lifecycle management  
+- Governance board review for cross‑domain events  
+
+This framework becomes mandatory for all new events published to the enterprise event backbone.
+
+---
+
+## 3. Governance Components
+
+### 3.1 Canonical Event Taxonomy
+All events must align with the enterprise taxonomy covering:
+
+- Naming conventions  
+- Domain boundaries  
+- Event categories (domain events, integration events, audit events)  
+
+### 3.2 Schema Registry Enforcement
+All schemas must be registered and validated using:
+
+- JSON Schema or Avro  
+- Automated linting  
+- Backward‑compatibility checks  
+
+### 3.3 Versioning Strategy
+- Additive, backward‑compatible changes only  
+- Breaking changes require a new version  
+- Deprecation policy with sunset timelines  
+
+### 3.4 Event Review Process
+- Domain submits schema for review  
+- Automated checks run  
+- Governance board approves cross‑domain events  
+- Schema is published to registry  
+
+---
+
+## 4. Consequences
+
+### Positive
+- Prevents schema drift  
+- Ensures interoperability  
+- Reduces downstream breakage  
+- Improves auditability and lineage  
+- Supports long‑term modernization  
+
+### Negative
+- Requires governance overhead  
+- Slows down initial event creation  
