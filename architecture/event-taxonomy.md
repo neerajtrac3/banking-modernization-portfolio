@@ -94,7 +94,6 @@ Examples:
 
 ---
 
-## 4. Canonical Event Schema
 
 ### 4.1 Standard Fields
 All events share a common envelope:
@@ -109,6 +108,11 @@ All events share a common envelope:
   "payloadVersion": "v1",
   "payload": {}
 }
+```
+
+### Example Payload (PaymentInitiatedEvent)
+
+```json
 {
   "transactionId": "string",
   "customerId": "string",
@@ -120,6 +124,11 @@ All events share a common envelope:
 }
 ```
 
+---
+
+### Customer → Fraud → RTP Flow
+
+```mermaid
 sequenceDiagram
     participant C360 as Customer 360
     participant Fraud as Fraud Engine
@@ -130,8 +139,13 @@ sequenceDiagram
     Fraud->>RTP: FraudScoreUpdatedEvent
     RTP->>Core: PaymentReleasedEvent
     Core->>RTP: PaymentSettledEvent
+```
 
+---
 
+### Loan Origination Flow
+
+```mermaid
 sequenceDiagram
     participant App as Loan Application
     participant LOS as Loan Origination System
@@ -142,3 +156,7 @@ sequenceDiagram
     LOS->>Fraud: FraudCheckRequestedEvent
     Fraud->>LOS: FraudScoreUpdatedEvent
     LOS->>Core: LoanFundedEvent
+```
+
+## 4. Canonical Event Schema
+
