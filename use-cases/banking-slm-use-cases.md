@@ -85,29 +85,13 @@ Produces JSON, XML, tables, and templates required for banking systems.
 ## 4. Conceptual Architecture (High‑Level)
 
 ```
-+-----------------------------------------------------------+
-|                   BankingSLM Architecture                 |
-+-----------------------------------------------------------+
-|  Domain Tokenizer & Embeddings                            |
-|  - Banking vocabulary                                      |
-|  - ISO 20022 fields                                        |
-|  - Regulatory terminology                                  |
-+-----------------------------------------------------------+
-|  Fine‑Tuned Model Layers                                   |
-|  - Payments reasoning                                      |
-|  - Compliance reasoning                                    |
-|  - Document understanding                                  |
-+-----------------------------------------------------------+
-|  Guardrails & Safety Layer                                 |
-|  - Policy constraints                                      |
-|  - Structured output enforcement                           |
-|  - Hallucination suppression                               |
-+-----------------------------------------------------------+
-|  Integration Layer                                         |
-|  - APIs                                                    |
-|  - Core banking adapters                                   |
-|  - Event‑driven triggers                                   |
-+-----------------------------------------------------------+
+flowchart TB
+    A[Domain Tokenizer & Embeddings]
+    B[Fine‑Tuned Model Layers]
+    C[Guardrails & Safety Layer]
+    D[Integration Layer]
+
+    A --> B --> C --> D
 ```
 
 ---
