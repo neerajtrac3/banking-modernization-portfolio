@@ -56,8 +56,6 @@ This use case addresses the modernization of **message ingestion, validation, tr
 ---
 
 ## 3. Detailed Architecture Diagram (Text Description)
-```markdown
-## 3. Detailed Architecture Diagram (Text Description)
 
 ````text
 [Channels / External Schemes]
