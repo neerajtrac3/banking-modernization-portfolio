@@ -74,7 +74,7 @@ flowchart TD
     F --> G[Event Streaming Layer]
 
     G --> H[Downstream Core Systems]
-```
+    
 ---
 
 ## 4. BankingSLM Integration (AI Component)
