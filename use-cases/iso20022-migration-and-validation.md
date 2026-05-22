@@ -54,7 +54,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
   Routes validation failures to operations teams with explainability.
 
 ---
-## 3. Detailed Architecture Diagram (Mermaid)
+## 3. Detailed Architecture Diagram 
 
 ```mermaid
 flowchart LR
