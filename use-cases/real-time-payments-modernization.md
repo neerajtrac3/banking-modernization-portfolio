@@ -105,16 +105,16 @@ flowchart TB
         C[Corporate API]
     end
 
-    subgraph Gateway[API Gateway & Payment Hub]
+    subgraph Gateway[API Gateway and Payment Hub]
         D[Payment Orchestration Layer]
         E[ISO 20022 Translator]
-        F[Event Streaming (Kafka/Pulsar)]
+        F[Event Streaming - Kafka or Pulsar]
     end
 
-    subgraph Core[Core Banking & Ledger]
+    subgraph Core[Core Banking and Ledger]
         G[Account Management]
         H[Funds Availability Check]
-        I[Posting & Settlement]
+        I[Posting and Settlement]
     end
 
     subgraph External[External Networks]
@@ -123,13 +123,13 @@ flowchart TB
         L[SWIFT GPI]
     end
 
-    subgraph Risk[Risk & Compliance]
+    subgraph Risk[Risk and Compliance]
         M[Fraud Detection Engine]
         N[AML Screening]
         O[Sanctions List Check]
     end
 
-    subgraph Analytics[Analytics & Monitoring]
+    subgraph Analytics[Analytics and Monitoring]
         P[Payment Insights]
         Q[Liquidity Dashboard]
         R[Operational Alerts]
@@ -150,6 +150,8 @@ flowchart TB
     D --> N
     D --> O
     F --> P
+    F --> Q
+    F --> R
 ```
     F --> Q
     F --> R
