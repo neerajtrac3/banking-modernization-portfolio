@@ -1,1 +1,66 @@
 Event-driven architecture
+# ADR-001: Adopt Event-Driven Architecture as the Integration Backbone
+
+## 1. Status
+Accepted
+
+## 2. Context
+
+The bank is modernizing multiple domains simultaneously: Customer 360, Fraud and AML, Loan Origination, Real-Time Payments, and Core Banking.  
+These domains must exchange data and decisions in real time, support high throughput, and remain loosely coupled to allow independent evolution.
+
+Traditional point-to-point integrations and batch file exchanges are:
+
+- Hard to scale  
+- Operationally fragile  
+- Difficult to audit and observe  
+- Slow to change  
+
+A new integration backbone is required.
+
+## 3. Decision
+
+We will adopt an **event-driven architecture (EDA)** as the primary integration pattern across domains, using a distributed event streaming platform (for example, Kafka) as the backbone.
+
+Key aspects:
+
+- Domains publish **immutable events** (facts)  
+- Other domains **subscribe** and react to those events  
+- Events follow a **canonical taxonomy and schema** (see `event-taxonomy.md`)  
+- Consumers are **idempotent** and **independently deployable**  
+
+## 4. Rationale
+
+- **Loose coupling:** Producers and consumers evolve independently  
+- **Scalability:** Event streaming platforms handle very high throughput  
+- **Real-time:** Supports instant fraud checks, RTP decisions, and C360 updates  
+- **Auditability:** Events form an immutable audit trail  
+- **Replayability:** New consumers can replay historical events  
+
+This aligns with the needs of:
+
+- Real-Time Payments (low latency, high throughput)  
+- Fraud and AML (real-time scoring, alerts)  
+- Customer 360 (near real-time profile updates)  
+- Loan Origination (event-driven workflows)  
+
+## 5. Consequences
+
+### 5.1 Positive
+
+- Simplified integration between domains  
+- Better resilience to downstream failures  
+- Easier onboarding of new consumers  
+- Strong foundation for analytics and AI  
+
+### 5.2 Negative
+
+- Requires investment in event platform operations  
+- Requires schema governance and versioning  
+- Developers must design for idempotency and eventual consistency  
+
+## 6. Related Artifacts
+
+- `architecture/event-taxonomy.md`  
+- `architecture/banking-modernization-reference-architecture.md`  
+- `architecture/non-functional-architecture.md`  
