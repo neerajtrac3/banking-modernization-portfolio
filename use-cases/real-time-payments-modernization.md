@@ -347,8 +347,8 @@ A Tier 1 US bank modernized its payment hub to support FedNow and RTP Network.
 - 30 percent improvement in fraud detection accuracy  
 - 99.99 percent availability achieved within six months
 
-
-- flowchart TB
+```
+flowchart TB
 
     A0[Phase 0 - Foundation<br>API Gateway<br>Event Streaming<br>ISO 20022 Translator]
     A1[Phase 1 - Core Integration<br>Ledger Posting<br>Funds Availability<br>Risk Engine Integration]
@@ -357,4 +357,4 @@ A Tier 1 US bank modernized its payment hub to support FedNow and RTP Network.
     A4[Phase 4 - Expansion<br>Cross Border RTP<br>Embedded Payments<br>Request to Pay]
 
     A0 --> A1 --> A2 --> A3 --> A4
-  
+```  
