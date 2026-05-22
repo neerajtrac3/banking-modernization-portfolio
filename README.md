@@ -54,8 +54,9 @@ banking-modernization-portfolio/
 ├── compliance-mapping-ISO20022-PCI-FFIEC.md
 └── auditability-and-observability.md
 
+---
 
-3. Key Components
+## 3. Key Components
 3.1 Architecture Blueprints
 This portfolio includes enterprise‑grade architectural assets such as:
 
