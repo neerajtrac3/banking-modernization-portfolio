@@ -56,24 +56,33 @@ This use case addresses the modernization of **message ingestion, validation, tr
 ---
 
 ## 3. Detailed Architecture Diagram (Text Description)
-````Text
-flowchart TD
-    A[Channels / External Schemes] --> B[ISO 20022 Message Gateway]
+````Daigram
+flowchart LR
+    subgraph Ingestion["Ingestion Layer"]
+        A[📥 Channels / External Schemes] --> B[ISO 20022 Message Gateway]
+    end
 
-    B --> C[Schema Validation Service]
+    subgraph Validation["Validation Layer"]
+        B --> C[🔍 Schema Validation Service]
+        C --> D[🤖 Semantic Validation Engine (BankingSLM)]
+        D --> D1[• Field‑level reasoning]
+        D --> D2[• Business rule validation]
+        D --> D3[• Compliance interpretation (FFIEC / OCC)]
+    end
 
-    C --> D[Semantic Validation Engine (BankingSLM)]
-    D --> D1[• Field‑level reasoning]
-    D --> D2[• Business rule validation]
-    D --> D3[• Compliance interpretation (FFIEC / OCC)]
+    subgraph Processing["Processing Layer"]
+        D --> E[🧩 MT ↔ MX Mapping Engine]
+        E --> F[⚙️ Enrichment & Transformation Layer]
+    end
 
-    D --> E[MT ↔ MX Mapping Engine]
+    subgraph Streaming["Streaming Layer"]
+        F --> G[🔄 Event Streaming Layer]
+    end
 
-    E --> F[Enrichment & Transformation Layer]
+    subgraph Downstream["Downstream Systems"]
+        G --> H[🏦 Core Banking / AML / Fraud / Reconciliation]
+    end
 
-    F --> G[Event Streaming Layer]
-
-    G --> H[Downstream Core Systems]
 ````    
 ---
 
