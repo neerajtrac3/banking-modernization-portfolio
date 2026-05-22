@@ -348,13 +348,29 @@ A Tier 1 US bank modernized its payment hub to support FedNow and RTP Network.
 - 99.99 percent availability achieved within six months
 
 ```
-flowchart TB
+gantt
+    dateFormat  YYYY-MM-DD
+    title Real Time Payments Modernization Roadmap
 
-    A0[Phase 0 - Foundation<br>API Gateway<br>Event Streaming<br>ISO 20022 Translator]
-    A1[Phase 1 - Core Integration<br>Ledger Posting<br>Funds Availability<br>Risk Engine Integration]
-    A2[Phase 2 - Network Connectivity<br>RTP Network<br>FedNow Service]
-    A3[Phase 3 - Analytics and Monitoring<br>Liquidity Dashboard<br>Operational Alerts]
-    A4[Phase 4 - Expansion<br>Cross Border RTP<br>Embedded Payments<br>Request to Pay]
+    section Foundation
+    API Gateway and Event Streaming     :done,    p0a, 2024-01-01, 60d
+    ISO 20022 Translator                :done,    p0b, 2024-02-15, 45d
 
-    A0 --> A1 --> A2 --> A3 --> A4
-```  
+    section Core Integration
+    Ledger Posting Integration          :active,  p1a, 2024-04-01, 60d
+    Funds Availability Engine           :active,  p1b, 2024-04-15, 45d
+    Risk Engine Integration             :         p1c, 2024-05-01, 45d
+
+    section Network Connectivity
+    RTP Network Enablement              :         p2a, 2024-07-01, 60d
+    FedNow Service Enablement           :         p2b, 2024-08-15, 60d
+
+    section Analytics and Monitoring
+    Liquidity Dashboard                 :         p3a, 2024-10-01, 45d
+    Operational Alerts                  :         p3b, 2024-10-15, 45d
+
+    section Expansion
+    Cross Border RTP                    :         p4a, 2024-12-01, 90d
+    Embedded Payments                   :         p4b, 2025-01-15, 90d
+    Request to Pay                      :         p4c, 2025-02-01, 90d
+```
