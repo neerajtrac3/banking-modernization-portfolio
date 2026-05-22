@@ -531,8 +531,7 @@ This roadmap ensures **controlled modernization**, delivering value at each stag
 
 ## 14. Architecture Diagram (ASCII Representation)
 
-Below is a text‑based architecture diagram suitable for GitHub Markdown:
-
+```text
 
            +---------------------------+
             |       Channels            |
@@ -573,6 +572,7 @@ Below is a text‑based architecture diagram suitable for GitHub Markdown:
 
 
 This diagram provides a clear, high‑level view of the Customer 360 ecosystem.
+```
 
 ## 15. Risks, Anti‑Patterns & Mitigation
 
