@@ -531,7 +531,7 @@ This roadmap ensures **controlled modernization**, delivering value at each stag
 
 ## 14. Architecture Diagram (ASCII Representation)
 
-```text
+```
 
            +---------------------------+
             |       Channels            |
