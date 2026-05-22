@@ -108,7 +108,7 @@ Produces JSON, XML, tables, and templates required for banking systems.
 |  - Core banking adapters                                   |
 |  - Event‑driven triggers                                   |
 +-----------------------------------------------------------+
-
+```
 ---
 
 ## 5. BankingSLM Use Cases
