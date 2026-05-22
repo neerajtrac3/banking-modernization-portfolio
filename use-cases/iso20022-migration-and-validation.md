@@ -54,9 +54,9 @@ This use case addresses the modernization of **message ingestion, validation, tr
   Routes validation failures to operations teams with explainability.
 
 ---
+## 3. Detailed Architecture Diagram (Mermaid)
 
-## 3. Detailed Architecture Diagram (Text Description)
-````Daigram
+```mermaid
 flowchart LR
     subgraph Ingestion["Ingestion Layer"]
         A[📥 Channels / External Schemes] --> B[ISO 20022 Message Gateway]
@@ -83,7 +83,6 @@ flowchart LR
         G --> H[🏦 Core Banking / AML / Fraud / Reconciliation]
     end
 
-````    
 ---
 
 ## 4. BankingSLM Integration (AI Component)
