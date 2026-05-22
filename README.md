@@ -1,21 +1,53 @@
 # Banking Modernization Portfolio
 
-A curated set of case studies and blueprints illustrating end-to-end banking modernization across channels, core, payments, and lending.
+> Enterprise architectures, frameworks, and transformation assets for large‑scale banking modernization  
+> **Author:** Neeraj Aggarwal  
+> Infosys Topaz COE (AI Architecture & Innovation) · Senior Program Manager, State Street (Enterprise Delivery & Governance)
 
-## Objectives
+---
 
-- Present a portfolio view of modernization initiatives
-- Document reference blueprints for key capability areas
-- Provide reusable narratives for architecture and program planning
+## 1. Overview
 
-## Repository structure
+This repository presents a curated portfolio of **banking modernization assets** authored and led by **Neeraj Aggarwal**. It is designed as an **enterprise‑grade, EB‑1A–oriented technical record** of work across:
 
-- `case-studies/` – Narrative case studies (anonymized where required)
-- `blueprints/` – Capability-specific modernization blueprints
-- `diagrams/` – Portfolio and capability maps
+- Core banking modernization  
+- Payments modernization (ACH, RTP, FedNow, ISO 20022)  
+- Cloud and API‑first transformation  
+- AI‑driven operating model transformation (including domain‑specific Small Language Models such as *BankingSLM*)  
+- Risk, compliance, and regulatory modernization  
 
-## Target audience
+The contents reflect **original contributions of major significance** to the banking industry, including:
 
-- CIOs and transformation leaders  
-- Enterprise architects  
-- Program and portfolio managers
+- Reference architectures and modernization blueprints  
+- Governance and API frameworks  
+- AI adoption patterns for regulated financial institutions  
+- Case‑style impact narratives aligned to real enterprise programs  
+
+---
+
+## 2. Repository structure
+
+```text
+banking-modernization-portfolio/
+│
+├── architecture/
+│   ├── modernization-reference-architecture.md
+│   ├── domain-driven-design-map.md
+│   ├── event-streaming-architecture.md
+│   └── api-first-banking-architecture.md
+│
+├── use-cases/
+│   ├── core-banking-modernization.md
+│   ├── payments-modernization.md
+│   ├── risk-and-compliance-automation.md
+│   └── customer-360-and-personalization.md
+│
+├── frameworks/
+│   ├── modernization-maturity-model.md
+│   ├── api-governance-framework.md
+│   ├── cloud-migration-blueprint.md
+│   └── ai-adoption-framework.md
+│
+├── governance/
+│   ├── security-controls.md
+│   ├── compliance-mapping-ISO20022-
