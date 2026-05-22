@@ -102,3 +102,22 @@ flowchart TB
     P --> K
     P --> J
 
+
+
+```mermaid
+sequenceDiagram
+    participant C360 as Customer 360
+    participant Fraud as Fraud Engine
+    participant RTP as Real Time Payments
+    participant Core as Core Banking
+
+    C360->>Fraud: CustomerProfileUpdated
+    Fraud->>RTP: RiskScoreUpdated
+    RTP->>Core: PaymentReleased
+    Core->>RTP: SettlementConfirmed
+```
+
+
+
+```
+````````````````````````````````````````````````````````
