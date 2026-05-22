@@ -54,7 +54,7 @@ This use case addresses the modernization of **message ingestion, validation, tr
   Routes validation failures to operations teams with explainability.
 
 ---
-```markdown
+
 ## 3. Detailed Architecture Diagram (Text Description)
 
 ````text
