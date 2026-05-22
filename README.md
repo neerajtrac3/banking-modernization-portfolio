@@ -53,9 +53,6 @@ banking-modernization-portfolio/
 
 ---
 
-
----
-
 ## 3. Key Components
 
 ### **3.1 Architecture Blueprints**
