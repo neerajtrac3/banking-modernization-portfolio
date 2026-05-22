@@ -439,8 +439,8 @@ All events follow a consistent schema:
     "sessionId": "xyz789"
   }
 }
-
-11.3 Event Governance
+```
+### 11.3 Event Governance
 Versioning for backward compatibility
 Schema registry for validation
 PII classification and masking rules
@@ -449,9 +449,6 @@ Canonical events ensure consistent analytics, personalization, and regulatory re
 
 ---
 
-# ✅ **SECTION 12 — Data Products & Domain Ownership Model**
-
-```markdown
 ## 12. Data Products & Domain Ownership Model
 
 Modern banks increasingly adopt a data mesh approach, where domains own and publish high‑quality data products. Customer 360 acts as both a consumer and producer of data products.
