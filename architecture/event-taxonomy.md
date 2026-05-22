@@ -2,26 +2,17 @@
 
 ## 1. Introduction
 
-This document defines the enterprise-wide event taxonomy used across Customer 360, Fraud & AML, Loan Origination, Real-Time Payments, and Core Banking.  
+This document defines the enterprise-wide event taxonomy used across Customer 360, Fraud and AML, Loan Origination, Real-Time Payments, and Core Banking.  
 It establishes a unified, canonical event model that enables interoperability, real-time analytics, and event-driven orchestration across all banking domains.
-
-The taxonomy ensures:
-- Consistent event naming
-- Standardized schemas
-- Clear producer–consumer relationships
-- Replayability and auditability
-- Regulatory alignment
-- Cross-domain integration
 
 ---
 
 ## 2. Event Naming Standards
 
 ### 2.1 Naming Convention
-Events follow the pattern:
-
+```
 <Domain><Entity><Action>Event
-
+```
 
 Examples:
 - CustomerProfileUpdatedEvent  
@@ -31,14 +22,14 @@ Examples:
 - AccountCreatedEvent  
 
 ### 2.2 Event Categories
-- **Business Events** – customer actions, payments, applications  
-- **Risk Events** – fraud alerts, AML flags, sanctions hits  
-- **Lifecycle Events** – approvals, settlements, postings  
-- **System Events** – retries, failures, timeouts  
+- Business Events  
+- Risk Events  
+- Lifecycle Events  
+- System Events  
 
 ---
 
-## 3. Canonical Event List (Cross‑Domain)
+## 3. Canonical Event List
 
 ### 3.1 Customer 360 Events
 | Event | Description |
@@ -48,9 +39,7 @@ Examples:
 | CustomerRiskScoreUpdatedEvent | Risk score recalculated |
 | CustomerRelationshipCreatedEvent | New relationship established |
 
----
-
-### 3.2 Fraud & AML Events
+### 3.2 Fraud and AML Events
 | Event | Description |
 |-------|-------------|
 | FraudAlertRaisedEvent | Fraud engine flags a transaction |
@@ -58,19 +47,15 @@ Examples:
 | AMLScreeningCompletedEvent | Sanctions/AML checks completed |
 | CaseCreatedEvent | Case management workflow triggered |
 
----
-
 ### 3.3 Real-Time Payments Events
 | Event | Description |
 |-------|-------------|
 | PaymentInitiatedEvent | Payment request received |
 | PaymentValidatedEvent | Validation completed |
 | FundsAvailabilityCheckedEvent | Balance check performed |
-| PaymentReleasedEvent | Payment sent to RTP/FedNow |
+| PaymentReleasedEvent | Payment sent to RTP or FedNow |
 | PaymentSettledEvent | Settlement confirmed |
 | PaymentFailedEvent | Payment rejected or timed out |
-
----
 
 ### 3.4 Loan Origination Events
 | Event | Description |
@@ -82,21 +67,19 @@ Examples:
 | LoanApprovedEvent | Final approval |
 | LoanFundedEvent | Funds disbursed |
 
----
-
 ### 3.5 Core Banking Events
 | Event | Description |
 |-------|-------------|
 | AccountCreatedEvent | New account opened |
 | AccountUpdatedEvent | Account attributes changed |
-| LedgerPostedEvent | Debit/credit posted |
+| LedgerPostedEvent | Debit or credit posted |
 | BalanceUpdatedEvent | Balance recalculated |
 
 ---
 
+## 4. Canonical Event Schema
 
-### 4.1 Standard Fields
-All events share a common envelope:
+### 4.1 Standard Envelope
 
 ```json
 {
@@ -110,7 +93,7 @@ All events share a common envelope:
 }
 ```
 
-### Example Payload (PaymentInitiatedEvent)
+### 4.2 Example Payload (PaymentInitiatedEvent)
 
 ```json
 {
@@ -126,7 +109,21 @@ All events share a common envelope:
 
 ---
 
-### Customer → Fraud → RTP Flow
+## 5. Producer–Consumer Matrix
+
+| Event | Producer | Consumers |
+|-------|----------|-----------|
+| CustomerProfileUpdatedEvent | Customer 360 | Fraud, LOS, RTP |
+| FraudAlertRaisedEvent | Fraud Engine | RTP, Core Banking, Case Mgmt |
+| PaymentInitiatedEvent | RTP | Fraud, Core Banking, Analytics |
+| LoanApplicationSubmittedEvent | LOS | Fraud, C360, Underwriting |
+| AccountCreatedEvent | Core Banking | C360, Analytics, LOS |
+
+---
+
+## 6. Event Flow Examples
+
+### 6.1 Customer → Fraud → RTP Flow
 
 ```mermaid
 sequenceDiagram
@@ -141,9 +138,7 @@ sequenceDiagram
     Core->>RTP: PaymentSettledEvent
 ```
 
----
-
-### Loan Origination Flow
+### 6.2 Loan Origination Flow
 
 ```mermaid
 sequenceDiagram
@@ -158,5 +153,25 @@ sequenceDiagram
     LOS->>Core: LoanFundedEvent
 ```
 
-## 4. Canonical Event Schema
+---
+
+## 7. Event Governance
+
+### 7.1 Governance Principles
+- Schema registry required  
+- Backward compatibility enforced  
+- Versioning required for payload changes  
+- PII must be tokenized  
+- All events logged for audit  
+
+### 7.2 Ownership Model
+- Each domain owns its events  
+- Shared events governed by enterprise architecture  
+- Changes require cross-domain review  
+
+---
+
+## 8. Summary
+
+This event taxonomy provides a unified, enterprise-wide event model that powers all modernization use cases. It ensures consistency, interoperability, and real-time integration across Customer 360, Fraud and AML, Loan Origination, Real-Time Payments, and Core Banking.
 
