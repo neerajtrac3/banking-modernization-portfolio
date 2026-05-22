@@ -24,6 +24,33 @@ The contents reflect **original contributions of major significance** to the ban
 - Case‑style impact narratives aligned to real enterprise programs  
 
 ---
+## 2. Repository structure
+
+```text
+banking-modernization-portfolio/
+│
+├── architecture/
+│   ├── modernization-reference-architecture.md
+│   ├── domain-driven-design-map.md
+│   ├── event-streaming-architecture.md
+│   └── api-first-banking-architecture.md
+│
+├── use-cases/
+│   ├── core-banking-modernization.md
+│   ├── payments-modernization.md
+│   ├── risk-and-compliance-automation.md
+│   └── customer-360-and-personalization.md
+│
+├── frameworks/
+│   ├── modernization-maturity-model.md
+│   ├── api-governance-framework.md
+│   ├── cloud-migration-blueprint.md
+│   └── ai-adoption-framework.md
+│
+├── governance/
+│   ├── security-controls.md
+```
+---
 
 
 ## 3. Key Components
