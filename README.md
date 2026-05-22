@@ -162,6 +162,7 @@ class BankingModernizationPortfolio:
         """
         ai_framework = self.frameworks["ai_adoption"]
         return ai_framework.prioritize_use_cases(process_catalog)
+```
 
 
 
