@@ -96,6 +96,115 @@ flowchart LR
 ```
 ---
 
+## 5. Architecture Blueprint (Strangler Pattern Architecture)
+
+A successful Strangler Pattern implementation requires a modular, API‑first, event‑driven architecture that allows legacy and modern systems to coexist safely.
+
+### 5.1 Key Components
+
+- **API Gateway / Façade Layer**  
+  Single unified entry point for all channels. Routes traffic to legacy or modern services based on feature flags.
+
+- **Routing & Feature Flag Layer**  
+  Enables progressive rollout, canary releases, and capability‑level cutovers.
+
+- **Anti‑Corruption Layer (ACL)**  
+  Protects new domain services from legacy schemas, protocols, and data inconsistencies.
+
+- **Domain Microservices**  
+  Independently deployable services for Accounts, Payments, Loans, Cards, etc.
+
+- **Event Bus (Kafka/Pulsar)**  
+  Backbone for domain events, CDC streams, and asynchronous workflows.
+
+- **CQRS Read Models**  
+  Optimized read stores for high‑volume queries such as balances, statements, and transaction history.
+
+- **Legacy Adapter Services**  
+  Thin wrappers around legacy APIs, queues, or batch interfaces.
+
+### 5.2 High‑Level Architecture Flow
+
+1. Channel → API Gateway  
+2. Gateway → Routing Layer  
+3. Routing Layer →  
+   - Modern service (if migrated)  
+   - Legacy adapter (if not migrated)  
+4. Modern service → Event Bus → Read Models + Legacy Sync  
+5. Legacy system → Adapter → Event Bus (for backward sync)
+
+### 5.3 Architecture Goals
+
+- Decouple channels from legacy  
+- Enable incremental modernization  
+- Reduce regression risk  
+- Support regulatory auditability  
+- Improve release velocity and resilience
+
+---
+
+## 6. Data Migration & Synchronization Strategy
+
+Data is the highest‑risk component of core banking modernization. The Strangler Pattern requires a robust coexistence strategy to ensure accuracy, auditability, and regulatory compliance.
+
+### 6.1 Dual‑Write with Idempotency
+
+For migrated capabilities:
+- New services become the **system of record**.
+- Legacy is updated via:
+  - Domain events (preferred), or
+  - CDC‑driven back‑propagation.
+
+All writes must be **idempotent** to avoid duplication.
+
+### 6.2 Event‑Driven Synchronization
+
+- New services publish **domain events** (AccountCreated, PaymentPosted, LoanUpdated).
+- Legacy adapters consume these events to update legacy stores.
+- Read models consume the same events to build optimized query stores.
+
+### 6.3 Backfill Pipelines
+
+Historical data is migrated using:
+- Batch backfill jobs  
+- Streaming backfill (for large datasets)  
+- Multiple dry runs before final cutover  
+
+Backfill must include:
+- Referential integrity checks  
+- Hash‑based row comparison  
+- Audit logs for each batch  
+
+### 6.4 Reconciliation Framework
+
+A reconciliation dashboard compares:
+- Balances  
+- Transaction counts  
+- Daily aggregates  
+- Ledger vs. sub‑ledger consistency  
+
+Alerts are triggered when thresholds are exceeded.
+
+### 6.5 Cutover Playbook
+
+**Pre‑Cutover**
+- Freeze selected changes (if required)
+- Run final backfill
+- Validate reconciliation
+
+**Cutover**
+- Switch routing to new service
+- Monitor KPIs in real time
+
+**Post‑Cutover**
+- Keep legacy in read‑only mode
+- Decommission legacy paths after stability period
+
+This strategy ensures safe coexistence of legacy and modern systems while maintaining regulatory compliance.
+
+
+----
+
 ## 7. Modernization decision framework
 
 To decide which domains to modernize first using the Strangler Pattern, we use a simple, repeatable scoring model:
