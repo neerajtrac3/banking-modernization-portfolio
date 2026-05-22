@@ -82,49 +82,18 @@ Produces JSON, XML, tables, and templates required for banking systems.
 
 ---
 
-## 4. Conceptual Architecture (High‑Level)
+## 4. Conceptual Architecture (High-Level)
 
-```
+```mermaid
 flowchart TB
-    A[Domain Tokenizer and Embeddings] --> B[Fine Tuned Model Layers]
-    B --> C[Guardrails and Safety Layer]
-    C --> D[Integration Layer]
+    A[Domain Tokenizer and Embeddings]
+    B[Fine Tuned Model Layers]
+    C[Guardrails and Safety Layer]
+    D[Integration Layer]
 
-    subgraph Tokenizer["Domain Tokenizer and Embeddings"]
-        A1[Banking Vocabulary]
-        A2[ISO 20022 Fields]
-        A3[Regulatory Terminology]
-        A1 --> A
-        A2 --> A
-        A3 --> A
-    end
-
-    subgraph Model["Fine Tuned Model Layers"]
-        B1[Payments Reasoning]
-        B2[Compliance Reasoning]
-        B3[Document Understanding]
-        B1 --> B
-        B2 --> B
-        B3 --> B
-    end
-
-    subgraph Safety["Guardrails and Safety Layer"]
-        C1[Policy Constraints]
-        C2[Structured Output Enforcement]
-        C3[Hallucination Suppression]
-        C1 --> C
-        C2 --> C
-        C3 --> C
-    end
-
-    subgraph Integration["Integration Layer"]
-        D1[APIs]
-        D2[Core Banking Adapters]
-        D3[Event Driven Triggers]
-        D1 --> D
-        D2 --> D
-        D3 --> D
-    end
+    A --> B
+    B --> C
+    C --> D
 ```
 
 ---
