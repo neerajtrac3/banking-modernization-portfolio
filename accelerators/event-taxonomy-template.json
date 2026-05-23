@@ -1,1 +1,35 @@
+{
+  "eventName": "CustomerProfileUpdated",
+  "domain": "Customer360",
+  "category": "DomainEvent",
+  "version": "v1",
+  "description": "Represents an update to a customer's profile, triggered by changes in core banking or digital channels.",
+
+  "schema": {
+    "customerId": "string",
+    "updateTimestamp": "string (ISO-8601)",
+    "updatedFields": {
+      "type": "object",
+      "description": "Key-value map of fields that changed",
+      "example": {
+        "email": "new-email@example.com",
+        "address": "123 Main St, Boston, MA"
+      }
+    },
+    "sourceSystem": "string"
+  },
+
+  "metadata": {
+    "piiClassification": "MinimalPII",
+    "retentionPolicy": "30-days",
+    "owner": "Customer360 Domain Team",
+    "governanceStatus": "Approved"
+  },
+
+  "nfr": {
+    "orderingGuarantee": "per-customerId",
+    "deliverySemantics": "at-least-once",
+    "expectedThroughput": "5k events/sec"
+  }
+}
 
