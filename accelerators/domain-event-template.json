@@ -1,1 +1,35 @@
+{
+  "eventName": "SampleDomainEvent",
+  "domain": "ExampleDomain",
+  "version": "v1",
+  "category": "DomainEvent",
+  "description": "Represents a significant business event within the domain that other systems may react to.",
+
+  "payload": {
+    "id": "string",
+    "timestamp": "string (ISO-8601)",
+    "attributes": {
+      "type": "object",
+      "description": "Key-value map of domain-specific attributes",
+      "example": {
+        "loanId": "LN12345",
+        "status": "Approved"
+      }
+    }
+  },
+
+  "metadata": {
+    "sourceSystem": "string",
+    "correlationId": "string",
+    "piiClassification": "None | MinimalPII | SensitivePII",
+    "retentionPolicy": "7-days | 30-days | 1-year",
+    "owner": "Domain Team Name"
+  },
+
+  "nfr": {
+    "orderingGuarantee": "none | per-id | per-aggregate",
+    "deliverySemantics": "at-least-once | exactly-once",
+    "expectedThroughput": "events/sec"
+  }
+}
 
